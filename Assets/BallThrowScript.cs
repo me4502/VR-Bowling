@@ -4,7 +4,6 @@ using System.Collections;
 public class BallThrowScript : MonoBehaviour {
 
     public GameObject bowlingPinPrefab;
-    public GameObject controllerObject;
     public int inputNumber;
 
     private bool thrown = false;
@@ -21,12 +20,24 @@ public class BallThrowScript : MonoBehaviour {
         if(controller.GetPressDown(Valve.VR.EVRButtonId.k_EButton_SteamVR_Trigger))
         {
             thrown = true;
+            gameObject.GetComponentInParent<SteamVR_TrackedObject>().enabled = false;
+            gameObject.GetComponent<Rigidbody>().isKinematic = false;
+            gameObject.GetComponent<Rigidbody>().position = new Vector3();
+            gameObject.GetComponent<Rigidbody>().rotation = new Quaternion();
+            gameObject.GetComponent<Rigidbody>().detectCollisions = true;
             gameObject.GetComponent<Rigidbody>().AddRelativeForce(controller.velocity);
         }
 
         if(!thrown)
         {
-            gameObject.GetComponent<Transform>().position = controllerObject.GetComponent<Transform>().position;
+            if(!gameObject.GetComponentInParent<SteamVR_TrackedObject>().enabled)
+            {
+                gameObject.GetComponentInParent<SteamVR_TrackedObject>().enabled = true;
+                gameObject.GetComponent<Rigidbody>().isKinematic = true;
+                gameObject.GetComponent<Rigidbody>().position = new Vector3();
+                gameObject.GetComponent<Rigidbody>().rotation = new Quaternion();
+                gameObject.GetComponent<Rigidbody>().detectCollisions = false;
+            }
         }
 
         if (thrown && controller.GetPressDown(Valve.VR.EVRButtonId.k_EButton_Grip))
