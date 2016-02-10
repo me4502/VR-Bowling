@@ -49,7 +49,7 @@ public class BallThrowScript : MonoBehaviour {
             }
 
             GameObject objrect = Instantiate(bowlingPinPrefab);
-            objrect.GetComponent<Transform>().position = new Vector3(0.57f, -486.97f, -1.47f);
+            objrect.GetComponent<Transform>().position = new Vector3(0.57f, -486.97f, 27.08f);
             thrown = false;
 
             gameObject.GetComponent<SteamVR_TrackedObject>().enabled = true;
