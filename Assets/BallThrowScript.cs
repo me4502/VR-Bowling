@@ -3,6 +3,7 @@ using System.Collections;
 
 public class BallThrowScript : MonoBehaviour {
 
+    public GameObject bowlingPinPrefab;
     public GameObject controllerObject;
     public int inputNumber;
 
@@ -26,6 +27,19 @@ public class BallThrowScript : MonoBehaviour {
         if(!thrown)
         {
             gameObject.GetComponent<Transform>().position = controllerObject.GetComponent<Transform>().position;
+        }
+
+        if (thrown && controller.GetPressDown(Valve.VR.EVRButtonId.k_EButton_Grip))
+        {
+            GameObject[] allObjects = GameObject.FindGameObjectsWithTag("Pin");
+            foreach (GameObject obj in allObjects)
+            {
+                Destroy(obj);
+            }
+
+            GameObject objrect = Instantiate(bowlingPinPrefab);
+            objrect.GetComponent<Transform>().position = new Vector3(-108.4538f, -486.8208f, -125.3749f);
+            thrown = false;
         }
     }
 }
