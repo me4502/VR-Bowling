@@ -8,6 +8,8 @@ public class BallThrowScript : MonoBehaviour {
 
     private bool thrown = false;
 
+    private Vector3 velocity;
+
 	// Use this for initialization
 	void Start () {
 	
@@ -20,24 +22,22 @@ public class BallThrowScript : MonoBehaviour {
         if(controller.GetPressDown(Valve.VR.EVRButtonId.k_EButton_SteamVR_Trigger))
         {
             thrown = true;
-            gameObject.GetComponentInParent<SteamVR_TrackedObject>().enabled = false;
+            gameObject.GetComponent<SteamVR_TrackedObject>().enabled = false;
             gameObject.GetComponent<Rigidbody>().isKinematic = false;
-            gameObject.GetComponent<Rigidbody>().position = new Vector3();
-            gameObject.GetComponent<Rigidbody>().rotation = new Quaternion();
             gameObject.GetComponent<Rigidbody>().detectCollisions = true;
-            gameObject.GetComponent<Rigidbody>().AddRelativeForce(controller.velocity);
+            gameObject.GetComponent<Rigidbody>().AddRelativeForce((gameObject.GetComponent<Transform>().localPosition - velocity) * 10, ForceMode.VelocityChange);
         }
 
         if(!thrown)
         {
-            if(!gameObject.GetComponentInParent<SteamVR_TrackedObject>().enabled)
+            if(!gameObject.GetComponent<SteamVR_TrackedObject>().enabled)
             {
-                gameObject.GetComponentInParent<SteamVR_TrackedObject>().enabled = true;
+                gameObject.GetComponent<SteamVR_TrackedObject>().enabled = true;
                 gameObject.GetComponent<Rigidbody>().isKinematic = true;
-                gameObject.GetComponent<Rigidbody>().position = new Vector3();
-                gameObject.GetComponent<Rigidbody>().rotation = new Quaternion();
                 gameObject.GetComponent<Rigidbody>().detectCollisions = false;
             }
+
+            velocity = gameObject.GetComponent<Transform>().localPosition;
         }
 
         if (thrown && controller.GetPressDown(Valve.VR.EVRButtonId.k_EButton_Grip))
@@ -49,8 +49,12 @@ public class BallThrowScript : MonoBehaviour {
             }
 
             GameObject objrect = Instantiate(bowlingPinPrefab);
-            objrect.GetComponent<Transform>().position = new Vector3(-108.4538f, -486.8208f, -125.3749f);
+            objrect.GetComponent<Transform>().position = new Vector3(0.57f, -486.97f, -1.47f);
             thrown = false;
+
+            gameObject.GetComponent<SteamVR_TrackedObject>().enabled = true;
+            gameObject.GetComponent<Rigidbody>().isKinematic = true;
+            gameObject.GetComponent<Rigidbody>().detectCollisions = false;
         }
     }
 }

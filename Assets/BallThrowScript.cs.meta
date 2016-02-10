@@ -1,10 +1,11 @@
 fileFormatVersion: 2
 guid: 76573f8fcdb2cdb4aa45bee5fa0d6659
-timeCreated: 1454925441
+timeCreated: 1455085845
 licenseType: Free
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - bowlingPinPrefab: {fileID: 154500, guid: de7bddb91dbae0f418b3665837c686e8, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

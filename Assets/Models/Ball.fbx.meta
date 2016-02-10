@@ -1,37 +1,16 @@
 fileFormatVersion: 2
-guid: 871e3ce3e706f774780cc9246c4b279d
-timeCreated: 1454921345
+guid: 9401a355c4164b64bbd0d1491155ce3e
+timeCreated: 1455086561
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
-    100000: ball_New_Material_5
-    100002: //RootNode
-    100004: grips_New_Material_6
-    100006: pin_New_Material_3
-    100008: rings_New_Material_4
-    100010: default
-    400000: ball_New_Material_5
-    400002: //RootNode
-    400004: grips_New_Material_6
-    400006: pin_New_Material_3
-    400008: rings_New_Material_4
-    400010: default
-    2300000: ball_New_Material_5
-    2300002: grips_New_Material_6
-    2300004: pin_New_Material_3
-    2300006: rings_New_Material_4
-    2300008: default
-    3300000: ball_New_Material_5
-    3300002: grips_New_Material_6
-    3300004: pin_New_Material_3
-    3300006: rings_New_Material_4
-    3300008: default
-    4300000: ball_New_Material_5
-    4300002: grips_New_Material_6
-    4300004: pin_New_Material_3
-    4300006: rings_New_Material_4
-    4300008: default
+    100000: //RootNode
+    400000: //RootNode
+    2300000: //RootNode
+    3300000: //RootNode
+    4300000: bowling:Mesh
+    9500000: //RootNode
   materials:
     importMaterials: 1
     materialName: 0
@@ -57,7 +36,7 @@ ModelImporter:
   meshes:
     lODScreenPercentages: []
     globalScale: 1
-    meshCompression: 3
+    meshCompression: 0
     addColliders: 0
     importBlendShapes: 1
     swapUVChannels: 0
@@ -90,7 +69,7 @@ ModelImporter:
     rootMotionBoneName: 
     hasTranslationDoF: 0
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 0
+  animationType: 2
   humanoidOversampling: 1
   additionalBone: 0
   userData: 
